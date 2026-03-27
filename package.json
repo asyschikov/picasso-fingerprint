@@ -2,15 +2,15 @@
   "name": "picasso-fingerprint",
   "version": "1.0.0",
   "description": "Picasso: Lightweight device class fingerprinting for web clients using HTML5 canvas rendering differences",
-  "main": "index.js",
-  "browser": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "index.js"
+    "dist"
   ],
   "scripts": {
-    "build": "esbuild demo/client.js --bundle --outfile=public/bundle.js",
-    "start": "npm run build && node server.js",
-    "demo": "npm run build && node server.js"
+    "build": "tsc && esbuild demo/client.ts --bundle --outfile=public/bundle.js --alias:picasso-fingerprint=./dist/index.js",
+    "demo": "npm run build && open public/index.html",
+    "prepublishOnly": "tsc"
   },
   "keywords": [
     "fingerprint",
@@ -24,6 +24,6 @@
   "license": "MIT",
   "devDependencies": {
     "esbuild": "^0.27.4",
-    "express": "^4.21.0"
+    "typescript": "^6.0.2"
   }
 }

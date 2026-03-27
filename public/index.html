@@ -60,6 +60,9 @@
       background: #111;
       border-radius: 6px;
     }
+    .meta-item.wide {
+      grid-column: 1 / -1;
+    }
     .meta-item .label {
       font-size: 0.75em;
       color: #666;
@@ -70,6 +73,7 @@
     .meta-item .value {
       font-size: 1.05em;
       color: #ccc;
+      word-break: break-all;
     }
     .meta-item .value.highlight {
       color: #81c784;
@@ -129,15 +133,6 @@
       color: #aaa;
       font-family: monospace;
     }
-    .badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 3px;
-      font-size: 0.8em;
-      font-weight: 600;
-    }
-    .badge-ok { background: #1b5e20; color: #81c784; }
-    .badge-new { background: #0d47a1; color: #64b5f6; }
     @media (max-width: 600px) {
       .meta-grid { grid-template-columns: 1fr; }
       .fingerprint-display { font-size: 1.5em; }
@@ -152,7 +147,7 @@
     <div class="card">
       <h2>Your Fingerprint</h2>
       <div class="fingerprint-display" id="fp-display">--------</div>
-      <div class="meta-grid" id="meta-grid">
+      <div class="meta-grid">
         <div class="meta-item">
           <div class="label">Browser</div>
           <div class="value" id="meta-browser">-</div>
@@ -162,7 +157,7 @@
           <div class="value" id="meta-os">-</div>
         </div>
         <div class="meta-item">
-          <div class="label">Reported Device Class</div>
+          <div class="label">Device Class</div>
           <div class="value highlight" id="meta-class">-</div>
         </div>
         <div class="meta-item">
@@ -173,9 +168,9 @@
           <div class="label">Challenge (seed / rounds)</div>
           <div class="value" id="meta-challenge">-</div>
         </div>
-        <div class="meta-item">
-          <div class="label">Total Observations</div>
-          <div class="value" id="meta-observations">-</div>
+        <div class="meta-item wide">
+          <div class="label">User Agent</div>
+          <div class="value" id="meta-ua" style="font-size:0.8em;">-</div>
         </div>
       </div>
     </div>
@@ -208,15 +203,10 @@
       <h2>Run History</h2>
       <table class="history-table">
         <thead>
-          <tr><th>Seed</th><th>Rounds</th><th>Response</th><th>Time</th><th>Status</th></tr>
+          <tr><th>Seed</th><th>Rounds</th><th>Response</th><th>Time</th></tr>
         </thead>
         <tbody id="history-body"></tbody>
       </table>
-    </div>
-
-    <div class="card" id="stats-card" style="display:none;">
-      <h2>Server Stats</h2>
-      <div class="meta-grid" id="stats-grid"></div>
     </div>
   </div>
 

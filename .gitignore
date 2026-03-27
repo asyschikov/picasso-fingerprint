@@ -1,2 +1,4 @@
 node_modules/
+dist/
 public/bundle.js
+picasso.pdf
